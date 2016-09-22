@@ -1,0 +1,7 @@
+<?php
+
+const CLIENT_ID = 'xxxxxxxxxxxxxxxxxxxxx.apps.googleusercontent.com';
+const CLIENT_SECRET = 'xxxxxxxxxxxxxxxxxxxx';
+const REDIRECT_URI = 'http://server.example.com/';
+
+?>
