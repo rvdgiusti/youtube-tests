@@ -15,6 +15,7 @@ $client->setClientSecret(CLIENT_SECRET);
 $client->setRedirectUri(REDIRECT_URI);
 $client->setScopes(array(
      'https://www.googleapis.com/auth/plus.login',
+     'https://www.googleapis.com/auth/youtube',
      'profile',
      'email',
      'openid',
