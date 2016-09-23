@@ -79,6 +79,7 @@ if(isset($_SESSION['access_token']) && $_SESSION['access_token']) {
     } catch (Google_Exception $e) {
         $htmlBody .= sprintf('<p>An client error occurred: <code>%s</code></p>',
         htmlspecialchars($e->getMessage()));
+        print_r($e);
     }
 
 } else {
