@@ -69,6 +69,7 @@ if(isset($_SESSION['access_token']) && $_SESSION['access_token']) {
           foreach ($playlistItemsResponse['items'] as $playlistItem) {
             $htmlBody .= sprintf('<li>%s (%s)</li>', $playlistItem['snippet']['title'],
               $playlistItem['snippet']['resourceId']['videoId']);
+            $videoId = $playlistItem['snippet']['resourceId']['videoId']);
           }
           $htmlBody .= '</ul>';
         }
@@ -96,6 +97,54 @@ if(isset($_SESSION['access_token']) && $_SESSION['access_token']) {
 	print "Email: {$email} <br>";
 	print "Image: <img src='{$profile_image_url}' alt='photo'/><br>";
     echo $htmlBody;
+    echo "<div id="player"></div>";
+    $videoDiv = <<<EOF
+    <script>
+      // 2. This code loads the IFrame Player API code asynchronously.
+      var tag = document.createElement('script');
+
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+      // 3. This function creates an <iframe> (and YouTube player)
+      //    after the API code downloads.
+      var player;
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+          height: '390',
+          width: '640',
+          videoId: '$videoId',
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
+        });
+      }
+
+      // 4. The API will call this function when the video player is ready.
+      function onPlayerReady(event) {
+        event.target.playVideo();
+      }
+
+      // 5. The API calls this function when the player's state changes.
+      //    The function indicates that when playing a video (state=1),
+      //    the player should play for six seconds and then stop.
+      var done = false;
+      function onPlayerStateChange(event) {
+        if (event.data == YT.PlayerState.PLAYING && !done) {
+          setTimeout(stopVideo, 6000);
+          done = true;
+        }
+      }
+      function stopVideo() {
+        player.stopVideo();
+      }
+    </script> 
+    EOF;
+
+
+
 	echo "<a href='index.php'>Voltar</a><br>";
 	echo "<a class='logout' href='?logout'><button>Logout</button></a>";
     }
