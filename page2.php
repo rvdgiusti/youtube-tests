@@ -97,7 +97,7 @@ if(isset($_SESSION['access_token']) && $_SESSION['access_token']) {
 	print "Email: {$email} <br>";
 	print "Image: <img src='{$profile_image_url}' alt='photo'/><br>";
     echo $htmlBody;
-    echo "<div id="player"></div>";
+    echo "<div id=\"player\"></div>";
     ?>
     <script>
       // 2. This code loads the IFrame Player API code asynchronously.
