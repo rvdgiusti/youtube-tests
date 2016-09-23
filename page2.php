@@ -72,13 +72,6 @@ if(isset($_SESSION['access_token']) && $_SESSION['access_token']) {
       }
       $htmlBody .= '</ul>';
     }
-    } catch (Google_Service_Exception $e) {
-        $htmlBody .= sprintf('<p>A service error occurred: <code>%s</code></p>',
-        htmlspecialchars($e->getMessage()));
-    } catch (Google_Exception $e) {
-        $htmlBody .= sprintf('<p>An client error occurred: <code>%s</code></p>',
-        htmlspecialchars($e->getMessage()));
-    }
 
 
 } else {
