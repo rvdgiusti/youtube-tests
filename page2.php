@@ -98,7 +98,7 @@ if(isset($_SESSION['access_token']) && $_SESSION['access_token']) {
 	print "Image: <img src='{$profile_image_url}' alt='photo'/><br>";
     echo $htmlBody;
     echo "<div id="player"></div>";
-    $videoDiv = <<<EOF
+    ?>
     <script>
       // 2. This code loads the IFrame Player API code asynchronously.
       var tag = document.createElement('script');
@@ -114,7 +114,7 @@ if(isset($_SESSION['access_token']) && $_SESSION['access_token']) {
         player = new YT.Player('player', {
           height: '390',
           width: '640',
-          videoId: '$videoId',
+          videoId: '<?php echo $videoId;?>',
           events: {
             'onReady': onPlayerReady,
             'onStateChange': onPlayerStateChange
@@ -141,9 +141,7 @@ if(isset($_SESSION['access_token']) && $_SESSION['access_token']) {
         player.stopVideo();
       }
     </script> 
-    EOF;
-
-
+    <?php
 
 	echo "<a href='index.php'>Voltar</a><br>";
 	echo "<a class='logout' href='?logout'><button>Logout</button></a>";
