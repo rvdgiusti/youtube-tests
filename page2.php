@@ -69,7 +69,7 @@ if(isset($_SESSION['access_token']) && $_SESSION['access_token']) {
           foreach ($playlistItemsResponse['items'] as $playlistItem) {
             $htmlBody .= sprintf('<li>%s (%s)</li>', $playlistItem['snippet']['title'],
               $playlistItem['snippet']['resourceId']['videoId']);
-            $videoId = $playlistItem['snippet']['resourceId']['videoId']);
+            $videoId = $playlistItem['snippet']['resourceId']['videoId'];
           }
           $htmlBody .= '</ul>';
         }
