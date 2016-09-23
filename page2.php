@@ -50,7 +50,7 @@ if(isset($_SESSION['access_token']) && $_SESSION['access_token']) {
     $profile_url = $me['url'];
     //print_r($_SESSION);
     try {
-        $channelsResponse = $youtube->channels->listChannels('ontentDetails', array(
+        $channelsResponse = $youtube->channels->listChannels('contentDetails', array(
           'mine' => 'true',
         ));
         $htmlBody = '';
